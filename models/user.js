@@ -41,4 +41,6 @@ const validateUser = (user) => {
     return error;
 }
 
-console.log(validateUser({name: "Robert", email: "robert@gmail.com", age: 10}));
+module.exports.validateUser = validateUser;
+module.exports.userSchema = userSchema;
+module.exports.User = User;
