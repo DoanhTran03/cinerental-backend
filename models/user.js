@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Joi = require('joi');
 
 const userSchema = mongoose.Schema({
     name: {
@@ -25,12 +26,19 @@ const userSchema = mongoose.Schema({
         type: Number,
         min: 10,
         max: 100,
+        required: true,
     }
 })
 const User = mongoose.model('user', userSchema);
 
-const user = new User ({
-    name: 'Ro',
-    email: 'robert@email.com',
-    age: 30
-})
+const validateUser = (user) => {
+    const schema = {
+        name: Joi.string().min(3).max(15).required(),
+        email: Joi.string().email().min(6).max(100).required(),
+        age: Joi.number().min(10).max(100).required()
+    }
+    const {error} = Joi.validate(user, schema);
+    return error;
+}
+
+console.log(validateUser({name: "Robert", email: "robert@gmail.com", age: 10}));
