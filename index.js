@@ -1,10 +1,15 @@
 const express = require('express');
 const app = express();
+const mongoose = require('mongoose');
+
+mongoose
+.connect('mongodb+srv://admin:fXcbBocvP82Cqxrv@cluster0.39mk6ig.mongodb.net/vividly')
+.then(() => console.log('Connected to databse'))
+.catch(err => console.log(err)); 
+
+const users = require('./routes/users');
 
 app.use(express.json());
-
-app.get('/', (req,res) => {
-    res.send('Hello, this is backend');
-})
+app.use('/api/users', users);
 
 app.listen(3000, () => console.log(`Backend is listening at http://localhost/3000`))
