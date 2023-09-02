@@ -5,3 +5,20 @@
 {"level":"error","message":"window is not defined"}
 {"message":"Connected to databse","level":"info"}
 {"message":"Connected to databse","level":"info"}
+{"message":"Connected to databse","level":"info"}
+{"level":"error","message":"jwtPrivateKey is not defined"}
+{"message":"Connected to databse","level":"info"}
+{"level":"error","message":"jwtPrivateKey is not defined"}
+{"message":"Connected to databse","level":"info"}
+{"level":"error","message":"jwtPrivateKey is not defined"}
+{"message":"Connected to databse","level":"info"}
+{"level":"error","message":"jwtPrivateKey is not defined"}
+{"message":"Connected to databse","level":"info"}
+{"level":"error","message":"jwtPrivateKey is not defined"}
+{"message":"Connected to databse","level":"info"}
+{"level":"error","message":"Private Key is missing"}
+{"message":"Connected to databse","level":"info"}
+{"message":"Connected to databse","level":"info"}
+{"message":"Connected to databse","level":"info"}
+{"name":"JsonWebTokenError","message":"invalid signature","level":"error"}
+{"message":"Connected to databse","level":"info"}
