@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {User, validateUser} = require('../models/user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 router.get('/', async (req, res) => {
     const result = await User.find({}).sort({name: 1}).lean();
@@ -12,7 +13,8 @@ router.post ('/', async (req,res) => {
     const error = validateUser(req.body);
     if (error) return res.status(404).send(error.details[0].message);
     
-    const checkUser = User.findOne({email: req.body.email}).lean();
+    const checkUser = await User.findOne({email: req.body.email}).lean();
+    console.log(checkUser);
     if (checkUser) return res.status(401).send('Email has been registered!');
 
     const salt = await bcrypt.genSalt(10);
@@ -26,7 +28,8 @@ router.post ('/', async (req,res) => {
         }
         )
     const result = await user.save();
-    res.send(result);
+
+    res.header('x-auth-token', result.generateToken()).send(result);
 })
 
 router.put('/:id', async (req,res) => {
