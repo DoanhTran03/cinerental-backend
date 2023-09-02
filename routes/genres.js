@@ -1,5 +1,4 @@
 const express = require('express');
-const { route } = require('./users');
 const router = express.Router();
 const {Genre, validateGenre} = require('../models/genre');
 const auth = require('../middlewares/auth');
