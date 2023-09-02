@@ -1,0 +1,4 @@
+{
+    "jwtPrivateKey": "cinerental_jwtPrivateKey",
+    "mongoUrl": "cinerental_mongoUrl"
+}

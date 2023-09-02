@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');  
 const winston = require('winston');
- 
+const config = require('config'); 
+
 module.exports = function () {
+  console.log(`${config.get('mongoUrl')}`);
   mongoose
     .connect(
-      "mongodb+srv://admin:fXcbBocvP82Cqxrv@cluster0.39mk6ig.mongodb.net/vividly"
+      `${config.get('mongoUrl')}`
     )
     .then(() => winston.info("Connected to databse"));
 };

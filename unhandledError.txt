@@ -22,3 +22,4 @@
 {"message":"Connected to databse","level":"info"}
 {"name":"JsonWebTokenError","message":"invalid signature","level":"error"}
 {"message":"Connected to databse","level":"info"}
+{"message":"Connected to databse","level":"info"}
