@@ -3,11 +3,6 @@ const {genre} = require('./genre');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
 
-mongoose
-.connect('mongodb+srv://admin:fXcbBocvP82Cqxrv@cluster0.39mk6ig.mongodb.net/vividly')
-.then(() => console.log('Connected to databse'))
-.catch(err => console.log(err)); 
-
 const movieSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -15,9 +10,9 @@ const movieSchema = new mongoose.Schema({
         maxlength: 30,
         required: true
     },
+    //REFERENCE TO genre model
     genreId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "genre",
+        type: String,
         required: true,
     },
     releaseDate: {
@@ -34,20 +29,17 @@ const movieSchema = new mongoose.Schema({
 
 const Movie = mongoose.model('movie', movieSchema);
 
-const movie = new Movie({
-    name: "Starwar",
-    genre: "64f34f566f34e03afcdf7044",
-    releaseDate: new Date("0000-03-25"),
-    length: 120
-})
-
 const validateMovie = (movie) => {
     const schema = {
         name: Joi.string().min(3).max(30).required(),   
-        genreId: Joi.objectId().required(),
+        genreId: Joi.string().required(),
         releaseDate: Joi.date().required(),
         length: Joi.number().min(10).max(200).required(),
     }
     const {error} = Joi.validate(movie,schema);
     return error
 }
+
+module.exports.validateMovie = validateMovie;
+module.exports.Movie = Movie;
+module.exports.movieSchema = movieSchema;

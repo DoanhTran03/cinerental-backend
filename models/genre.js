@@ -1,12 +1,6 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 
-mongoose
-.connect('mongodb+srv://admin:fXcbBocvP82Cqxrv@cluster0.39mk6ig.mongodb.net/vividly')
-.then(() => console.log('Connected to databse'))
-.catch(err => console.log(err)); 
-
-
 const genreSchema = new mongoose.Schema({
     name: {
         type: String,

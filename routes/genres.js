@@ -22,7 +22,7 @@ router.post('/', async (req,res) => {
 
 router.put('/:id', async (req,res) => {
     const genre = await Genre.findById(req.params.id);
-    if(!genre) res.status
+    if(!genre) res.status(404).send('Genre with specified ID is not found');
 
     const error = validateGenre(req.body);
     if(error) return res.status(401).send(error.details[0].message);
