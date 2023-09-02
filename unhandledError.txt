@@ -2,3 +2,5 @@
 {"level":"error","message":""}
 {"level":"error","message":""}
 {"level":"error","message":""}
+{"level":"error","message":"window is not defined"}
+{"message":"Connected to databse","level":"info"}
