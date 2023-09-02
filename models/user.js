@@ -27,7 +27,8 @@ const userSchema = mongoose.Schema({
                 else return true;
             },
             message: 'The email format is inappropriate'
-        }
+        },
+        unique: true,
     },
     age: {
         type: Number,

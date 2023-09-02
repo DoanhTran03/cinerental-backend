@@ -12,6 +12,9 @@ router.post ('/', async (req,res) => {
     const error = validateUser(req.body);
     if (error) return res.status(404).send(error.details[0].message);
     
+    const checkUser = User.findOne({email: req.body.email}).lean();
+    if (checkUser) return res.status(401).send('Email has been registered!');
+
     const salt = await bcrypt.genSalt(10);
 
     const user = new User(
