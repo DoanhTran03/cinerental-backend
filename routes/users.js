@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {User, validateUser} = require('../models/user');
+const bcrypt = require('bcrypt');
 
 router.get('/', async (req, res) => {
     const result = await User.find({}).sort({name: 1}).lean();
@@ -10,14 +11,17 @@ router.get('/', async (req, res) => {
 router.post ('/', async (req,res) => {
     const error = validateUser(req.body);
     if (error) return res.status(404).send(error.details[0].message);
+    
+    const salt = await bcrypt.genSalt(10);
 
     const user = new User(
         {
             name: req.body.name,
+            password: await bcrypt.hash(req.body.password, salt),
             email: req.body.email,
             age: req.body.age
         }
-    )
+        )
     const result = await user.save();
     res.send(result);
 })
@@ -29,7 +33,10 @@ router.put('/:id', async (req,res) => {
     const error = validateUser(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
+    const salt = await bcrypt.genSalt(10);
+
     user.name = req.body.name,
+    user.password = await bcrypt.hash(req.body.password, salt);
     user.email = req.body.email,
     user.age = req.body.age
 
