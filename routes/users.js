@@ -39,7 +39,7 @@ router.put('/:id', async (req,res) => {
 
 router.delete('/:id', async (req,res) => {
     const result = await User.findByIdAndRemove(req.params.id);
-    res.send(result);
+    res.send(result);  
 })
 
 router.get('/:id', async (req,res) => {
