@@ -4,7 +4,10 @@ const {Movie, validateMovie} = require('../models/movies');
 const auth = require('../middlewares/auth');
 
 router.get('/',auth, async (req,res) => {
-    const result = await Movie.find({}).sort({name: 1}).lean();
+    const result = await Movie.find({})
+    .sort({name: 1})
+    .populate('genre',{_id: 1, name: 1})
+    .lean();
     return res.send(result);
 })
 
