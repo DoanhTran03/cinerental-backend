@@ -3,8 +3,9 @@ const router = express.Router();
 const {User, validateUser} = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const auth = require('../middlewares/auth');
 
-router.get('/', async (req, res) => {
+router.get('/',auth, async (req, res) => {
     const result = await User.find({}).sort({name: 1}).lean();
     res.send(result);
 })
@@ -32,7 +33,7 @@ router.post ('/', async (req,res) => {
     res.header('x-auth-token', result.generateToken()).send(result);
 })
 
-router.put('/:id', async (req,res) => {
+router.put('/:id',auth, async (req,res) => {
     const user = await User.findById(req.params.id);
     if (!user) return res.status(404).send('User with specified ID is not found!');
 
@@ -50,7 +51,7 @@ router.put('/:id', async (req,res) => {
     res.send(result);
 })
 
-router.delete('/:id', async (req,res) => {
+router.delete('/:id', auth, async (req,res) => {
     const result = await User.findByIdAndRemove(req.params.id);
     res.send(result);  
 })
