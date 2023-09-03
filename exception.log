@@ -103,3 +103,45 @@
   service: 'your-service-name',
   timestamp: '2023-09-03 15:16:47'
 }
+{
+  message: 'Backend is listening at http://localhost:3000',
+  level: 'info',
+  service: 'your-service-name',
+  timestamp: '2023-09-03 15:18:53'
+}
+{
+  message: 'Connected to databse',
+  level: 'info',
+  service: 'your-service-name',
+  timestamp: '2023-09-03 15:18:53'
+}
+{
+  message: 'Backend is listening at http://localhost:3000',
+  level: 'info',
+  service: 'your-service-name',
+  timestamp: '2023-09-03 15:20:09'
+}
+{
+  message: 'Connected to databse',
+  level: 'info',
+  service: 'your-service-name',
+  timestamp: '2023-09-03 15:20:10'
+}
+{
+  level: 'error',
+  service: 'your-service-name',
+  timestamp: '2023-09-03 15:20:26',
+  message: 'Testing inner express'
+}
+{
+  message: 'Backend is listening at http://localhost:3000',
+  level: 'info',
+  service: 'your-service-name',
+  timestamp: '2023-09-03 15:21:51'
+}
+{
+  message: 'Connected to databse',
+  level: 'info',
+  service: 'your-service-name',
+  timestamp: '2023-09-03 15:21:52'
+}

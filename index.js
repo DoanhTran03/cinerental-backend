@@ -10,6 +10,7 @@ require("./startup/config")();
 require("./startup/routes")(app);
 require("./startup/validate")();
 require("./startup/db")();
+require('./startup/prod')(app);
 
 app.listen(PORT, () =>
   logger.info(`Backend is listening at http://localhost:${PORT}`)
