@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);
-const {Genre} = require('./genre');
+const {Genre} = require('../models/genre');
 
 const movieSchema = new mongoose.Schema({
     name: {
@@ -10,7 +10,6 @@ const movieSchema = new mongoose.Schema({
         maxlength: 30,
         required: true
     },
-    //REFERENCE TO genre model
     genreId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "genre",

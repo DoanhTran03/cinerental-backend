@@ -3,7 +3,6 @@ const {User} = require('../models/user');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 
-
 router.post('/', async (req,res) => {
     const user = await User.findOne({email: req.body.email});
     if (!user) return res.status(404).send('Email has not been registered');
@@ -14,6 +13,5 @@ router.post('/', async (req,res) => {
 
     return res.send(user.generateToken());
 })
-
 
 module.exports = router;

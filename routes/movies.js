@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {Movie, validateMovie} = require('../models/movies');
 const auth = require('../middlewares/auth');
+const {Genre} = require('../models/genre');
 
 router.get('/',auth, async (req,res) => {
     const result = await Movie.find({})

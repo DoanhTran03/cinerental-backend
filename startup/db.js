@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');  
-const winston = require('winston');
 const config = require('config'); 
+const logger = require('../logger/logger');
 
 module.exports = function () {
-  console.log(`${config.get('mongoUrl')}`);
   mongoose
     .connect(
       `${config.get('mongoUrl')}`
     )
-    .then(() => winston.info("Connected to databse"));
+    .then(() => logger.info("Connected to databse"));
 };

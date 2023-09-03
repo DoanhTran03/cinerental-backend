@@ -4,6 +4,7 @@ const {Genre, validateGenre} = require('../models/genre');
 const auth = require('../middlewares/auth');
 
 router.get('/', auth, async (req,res) => {
+    throw new Error('Testing inner express');
     const result = await Genre.find({}).sort({name:1}).lean();
     res.send(result);  
 })

@@ -3,7 +3,7 @@ const users = require("../routes/users");
 const genres = require("../routes/genres");
 const movies = require("../routes/movies");
 const auth = require("../routes/auth");
-const error = require("../middlewares/error");
+const error = require('../middlewares/error');
 
 module.exports = function (app) {
   app.use(express.json());

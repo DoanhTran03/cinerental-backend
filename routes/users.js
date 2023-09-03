@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const {User, validateUser} = require('../models/user');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 const auth = require('../middlewares/auth');
 
 router.get('/',auth, async (req, res) => {
@@ -15,7 +14,7 @@ router.post ('/', async (req,res) => {
     if (error) return res.status(404).send(error.details[0].message);
     
     const checkUser = await User.findOne({email: req.body.email}).lean();
-    console.log(checkUser);
+
     if (checkUser) return res.status(401).send('Email has been registered!');
 
     const salt = await bcrypt.genSalt(10);

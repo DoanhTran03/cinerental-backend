@@ -1,6 +1,5 @@
-const winston = require('winston');
-
-module.exports = function (err, req, res, next) {
-    winston.error(err.message, err);
-    res.status(500).send('Internal Server failed');
+const logger = require('../logger/logger');
+module.exports = function (err,req,res,next) {
+    logger.error(err);
+    res.status(500).send('Internal server failed');
 }
