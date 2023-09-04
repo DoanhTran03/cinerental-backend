@@ -56,33 +56,6 @@ post a new movies: POST /genres
 update a movies: PUT /genres/{id}  
 delete a movies: DELETE /genres/{id}
 
-
-## Documentation
-
-endpoint: https://mighty-thicket-80898-9d81752863a6.herokuapp.com/
-
-### Routes:
-To get x-auth-token for authentication, go to POST /users or POST /auth, other routes will require x-auth-token for access!
-#### users
-get a list of users: GET /users  
-register a new user: POST /users
-
-#### auth
-authenticate account: POST /auth
-
-#### genres
-get a list of genres: GET /genres  
-post a new genres: POST /genres  
-update a genre: PUT /genres/{id}  
-delete a genre: DELETE /genres/{id}
-
-#### movies
-get a list of movies: GET /genres  
-post a new movies: POST /genres  
-update a movies: PUT /genres/{id}  
-delete a movies: DELETE /genres/{id}
-
-
 ##  
    
 Thank you for visting the CineRental API Backend. Enjoy exploring and playing around with the project!
